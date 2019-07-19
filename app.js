@@ -1,8 +1,12 @@
+//"C:\Program Files\MongoDB\Server\4.0\bin\mongo.exe"                        <----- mongo start cmd
+//"C:\Program Files\MongoDB\Server\4.0\bin\mongod.exe" --dbpath="c:\data\db" <----- mongod start cmd
 //package utilization vars ----------------------
-    var express     = require("express");
+    var express     = require("express"),
     app             = express(),
     bodyParser      = require("body-parser"),
-    mongoose        = require("mongoose");
+    mongoose        = require("mongoose"),
+    Blog            = require("./models/blog.js"),
+    indexRoutes     = require("./routes/index.js");
 //-----------------------------------------------
 
 //run initializations----------------------------
@@ -16,12 +20,26 @@
     app.use(bodyParser.urlencoded({extended:true}));
 //-----------------------------------------------
 
+//routes----------------------------------------
+    app.use(indexRoutes);
+//----------------------------------------------
 
 
 
+//listen for the server-------------------------
+    var port = process.env.PORT || 3000;
+    app.listen(port, function(){
+        console.log("Starting app");
+    });
+//----------------------------------------------
 
-//listen for the server
-var port = process.env.PORT || 3000;
-app.listen(port, function(){
-    console.log("Starting app");
-});
+
+//CODE BLOCKS ----------------------------------
+
+// TEST BLOG CREATION BLOCK ********
+// Blog.create({
+//     title: "Test Blog",
+//     image: "https://images.unsplash.com/photo-1527482797697-8795b05a13fe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
+//     body: "this blog is going to be a storm."
+// })
+//**********************************
