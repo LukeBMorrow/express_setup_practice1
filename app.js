@@ -1,3 +1,4 @@
+//"localhost:3000"                                                           <----- url for server
 //"C:\Program Files\MongoDB\Server\4.0\bin\mongo.exe"                        <----- mongo start cmd
 //"C:\Program Files\MongoDB\Server\4.0\bin\mongod.exe" --dbpath="c:\data\db" <----- mongod start cmd
 //package utilization vars ----------------------
@@ -7,6 +8,7 @@
     mongoose        = require("mongoose"),
     Blog            = require("./models/blog.js"),
     indexRoutes     = require("./routes/index.js");
+    blogPostRoutes     = require("./routes/blog-posts.js");
 //-----------------------------------------------
 
 //run initializations----------------------------
@@ -22,6 +24,7 @@
 
 //routes----------------------------------------
     app.use(indexRoutes);
+    app.use("/blog-posts",blogPostRoutes);
 //----------------------------------------------
 
 
