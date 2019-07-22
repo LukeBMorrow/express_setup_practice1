@@ -8,7 +8,9 @@
     mongoose        = require("mongoose"),
     Blog            = require("./models/blog.js"),
     indexRoutes     = require("./routes/index.js");
-    blogPostRoutes     = require("./routes/blog-posts.js");
+    blogPostRoutes  = require("./routes/blog-posts.js");
+    aboutUsRoutes   = require("./routes/about-us.js");
+    eventsRoutes    = require("./routes/events.js");
 //-----------------------------------------------
 
 //run initializations----------------------------
@@ -24,7 +26,9 @@
 
 //routes----------------------------------------
     app.use(indexRoutes);
-    app.use("/blog-posts",blogPostRoutes);
+    app.use("/blog-posts"   ,blogPostRoutes);
+    app.use("/about-us"     ,aboutUsRoutes);
+    app.use("/events"       ,eventsRoutes);
 //----------------------------------------------
 
 
